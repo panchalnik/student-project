@@ -10,6 +10,9 @@ interface Student {
 }
 
 function App() {
+
+  const envName = import.meta.env.VITE_ENV_NAME;
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -117,6 +120,24 @@ function App() {
     return (
     <div className="container">
       <h1>🎓 Student Registration System</h1>
+      <div
+  style={{
+    backgroundColor:
+      envName === "Production"
+        ? "#dc3545"
+        : envName === "QA"
+        ? "#ffc107"
+        : "#198754",
+    color: "white",
+    padding: "10px",
+    borderRadius: "8px",
+    marginBottom: "20px",
+    fontWeight: "bold",
+    textAlign: "center",
+  }}
+>
+  Running Environment: {envName}
+</div>
 
       <div className="form-container">
         <h2>
